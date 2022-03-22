@@ -4,6 +4,9 @@ import "./App.css";
 import teslaData from "./data/tesla-sites.json";
 
 function App() {
+
+  const filteredStantions = teslaData.filter(tesla => tesla.address.country === "Italy");
+
   return (
     <div className="App">
       <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={true}>
@@ -12,7 +15,7 @@ function App() {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
-        {teslaData.map((tesla) => (
+        {filteredStantions.map((tesla) => (
           <Marker 
           key= {tesla.id}
           position={[tesla.gps.latitude, tesla.gps.longitude]}></Marker>
