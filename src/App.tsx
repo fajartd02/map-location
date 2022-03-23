@@ -1,9 +1,11 @@
 import React from "react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup,  Polygon } from "react-leaflet";
 import "./App.css";
 import teslaData from "./data/tesla-sites.json";
+import statesData from "./data/indonesia-data.json";
 
 function App() {
+  console.log(statesData);
   const filteredStantions = teslaData.filter(
     (tesla) => tesla.address.country === "Italy"
   );
@@ -14,6 +16,7 @@ function App() {
         center={[42.006703, 13.258737]}
         zoom={6}
         scrollWheelZoom={true}
+        style={{width:'50vw', height: '50vh'}}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -34,6 +37,8 @@ function App() {
             </Popup>
           </Marker>
         ))}
+
+        
       </MapContainer>
     </div>
   );
